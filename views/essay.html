@@ -1,0 +1,49 @@
+
+    <nav class="navbar navbar-default" role="navigation">
+            <header class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                    <span class="sr-only">展开导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">13sai-宓记</a>
+            </div>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="nav navbar-nav">
+                    <li  class="active" ><a href="/">首页</a></li>
+                    <li ><a href="/collect">收藏</a></li>
+                    <li ><a href="/tag">书签</a></li>
+                    <li ><a href="/about">关于</a></li>
+                </ul>
+            </div>
+            </header>
+        </nav>    
+        <div class="container">
+            <div id="page-content">
+                <div class="col-md-8 col-xs-12">
+                    <div class="panel panel-info">
+                        <div class="panel-heading text-center">
+                            <h3>{{.info.Title}}</h3>
+                            <p>{{.info.Date}}</p>
+                        </div>
+                        <div class="panel-body" >
+                            <div class="text-center">
+                                <img src="{{.article.pic}}" class="abstract-img img-responsive" alt="Responsive image">
+                            </div>
+                            <div id="content">{{.info.Content}}</div>
+                            <div class="text-center"><img src="http://image.13sai.com/zan.jpg?imageView2/2/w/200/h/300"></div></div>
+                    </div>
+                    <script src="/static/js/marked.js"></script>
+                    <script>
+                        var text = document.getElementById('content').innerHTML;
+                        console.log(text)
+                        var reg=/&gt;/g;
+                        text = text.replace(reg, ">");
+                        var reg=/&lt;/g;
+                        text = text.replace(reg, "<");
+                        document.getElementById('content').innerHTML =
+                            marked(text);
+                    </script>
+                </div>
